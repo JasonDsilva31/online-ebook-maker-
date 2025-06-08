@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystique Books - Where Stories Come Alive</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-particles"></div>
+        <div class="mystical-orbs"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-feather-alt"></i>
+                    <div class="logo-glow"></div>
+                </div>
+                <span class="logo-text">
+                    <span class="mystique">Mystique</span>
+                    <span class="books">Books</span>
+                </span>
+            </div>
+            <div class="nav-menu" id="main-nav">
+                <div class="nav-menu-wrapper">
+                    <a href="#home" class="nav-link active" onclick="showSection('home')" data-text="Home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#browse" class="nav-link" onclick="showSection('browse')" data-text="Discover">
+                        <i class="fas fa-compass"></i>
+                        <span>Discover</span>
+                    </a>
+                    <a href="#create" class="nav-link" onclick="showSection('create')" data-text="Create" style="display: none;">
+                        <i class="fas fa-quill-pen"></i>
+                        <span>Create</span>
+                    </a>
+                    <a href="#my-books" class="nav-link" onclick="showSection('my-books')" data-text="Library" style="display: none;">
+                        <i class="fas fa-book-bookmark"></i>
+                        <span>Library</span>
+                    </a>
+                </div>
+                <div class="nav-indicator"></div>
+            </div>
+            <div class="auth-section" id="auth-section">
+                <button class="btn-auth btn-login" onclick="showAuthModal('login')">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="btn-auth btn-signup" onclick="showAuthModal('register')">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+            </div>
+            <div class="user-section" id="user-section" style="display: none;">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <span class="user-name" id="user-name">User</span>
+                </div>
+                <button class="btn-auth btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to Mystique Books</h1>
+                    <p>Dive into a world where stories come alive. Create, write, edit, and share your mystical tales with fellow storytellers. Experience collaborative writing like never before.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showSection('create')">
+                            <i class="fas fa-plus"></i> Start Writing
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('browse')">
+                            <i class="fas fa-search"></i> Browse Books
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-book-reader"></i>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-edit"></i>
+                    <h3>Easy Writing Tools</h3>
+                    <p>Simple and intuitive editor with formatting options, chapter management, and auto-save.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Collaborative Editing</h3>
+                    <p>Allow other users to contribute to your books with controlled editing permissions.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-share"></i>
+                    <h3>Instant Publishing</h3>
+                    <p>Publish your books instantly and share them with readers around the world.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Interactive Reading</h3>
+                    <p>Clean, responsive reading experience with bookmarks, notes, and progress tracking.</p>
+                </div>
+            </div>
+            
+            <!-- Motivational Quotes Section -->
+            <div class="quotes-section">
+                <div class="section-header">
+                    <h2>Words of Inspiration</h2>
+                    <p>Let these words guide your creative journey</p>
+                </div>
+                <div class="quotes-carousel">
+                    <div class="quote-card active">
+                        <div class="quote-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>"The first draft of anything is shit. But you have to start somewhere."</p>
+                            <span class="quote-author">— Ernest Hemingway</span>
+                        </div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>"You can't use up creativity. The more you use, the more you have."</p>
+                            <span class="quote-author">— Maya Angelou</span>
+                        </div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>"Write what should not be forgotten."</p>
+                            <span class="quote-author">— Isabel Allende</span>
+                        </div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>"The secret to getting ahead is getting started."</p>
+                            <span class="quote-author">— Mark Twain</span>
+                        </div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>"Every great story on the planet happened when someone decided not to give up."</p>
+                            <span class="quote-author">— Spryte Loriano</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="quote-dots">
+                    <span class="dot active" onclick="currentQuote(1)"></span>
+                    <span class="dot" onclick="currentQuote(2)"></span>
+                    <span class="dot" onclick="currentQuote(3)"></span>
+                    <span class="dot" onclick="currentQuote(4)"></span>
+                    <span class="dot" onclick="currentQuote(5)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browse Books Section -->
+        <section id="browse" class="section">
+            <div class="section-header">
+                <h2>Discover Stories</h2>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search books by title or author...">
+                    <button onclick="searchBooks()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterBooks('all')">All Books</button>
+                <button class="filter-btn" onclick="filterBooks('fiction')">Fiction</button>
+                <button class="filter-btn" onclick="filterBooks('non-fiction')">Non-Fiction</button>
+                <button class="filter-btn" onclick="filterBooks('poetry')">Poetry</button>
+                <button class="filter-btn" onclick="filterBooks('collaborative')">Collaborative</button>
+            </div>
+            <div id="books-grid" class="books-grid">
+                <!-- Books will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Create Book Section -->
+        <section id="create" class="section">
+            <div class="section-header">
+                <h2>Craft Your Tale</h2>
+                <p>Begin your mystical writing journey or forge a collaborative saga</p>
+            </div>
+            <div class="create-form">
+                <div class="form-group">
+                    <label for="book-title">Book Title</label>
+                    <input type="text" id="book-title" placeholder="Enter your book title">
+                </div>
+                <div class="form-group">
+                    <label for="book-author">Author Name</label>
+                    <input type="text" id="book-author" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="book-genre">Genre</label>
+                    <select id="book-genre">
+                        <option value="fiction">Fiction</option>
+                        <option value="non-fiction">Non-Fiction</option>
+                        <option value="poetry">Poetry</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Science Fiction</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="biography">Biography</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="book-description">Description</label>
+                    <textarea id="book-description" placeholder="Brief description of your book"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="allow-collaboration">
+                        <span class="checkmark"></span>
+                        Allow other users to edit and contribute to this book
+                    </label>
+                </div>
+                <button class="btn btn-primary" onclick="createBook()">
+                    <i class="fas fa-plus"></i> Create Book
+                </button>
+            </div>
+        </section>
+
+        <!-- My Books Section -->
+        <section id="my-books" class="section">
+            <div class="section-header">
+                <h2>Your Library</h2>
+                <p>Manage your mystical creations and collaborative enchantments</p>
+            </div>
+            <div class="library-tabs">
+                <button class="tab-btn active" onclick="showLibraryTab('published')">Published</button>
+                <button class="tab-btn" onclick="showLibraryTab('drafts')">Drafts</button>
+                <button class="tab-btn" onclick="showLibraryTab('archived')">Archived</button>
+            </div>
+            <div id="published-books" class="library-tab-content active">
+                <div id="published-books-grid" class="books-grid">
+                    <!-- Published books will be populated by JavaScript -->
+                </div>
+            </div>
+            <div id="drafts-books" class="library-tab-content">
+                <div id="drafts-books-grid" class="books-grid">
+                    <!-- Draft books will be populated by JavaScript -->
+                </div>
+            </div>
+            <div id="archived-books" class="library-tab-content">
+                <div id="archived-books-grid" class="books-grid">
+                    <!-- Archived books will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Editor Section -->
+        <section id="editor" class="section full-height">
+            <div class="editor-header">
+                <div class="editor-title">
+                    <button class="btn btn-back" onclick="closeEditor()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <h3 id="editing-book-title">Book Title</h3>
+                </div>
+                <div class="editor-controls">
+                    <button class="btn btn-secondary" onclick="addChapter()">
+                        <i class="fas fa-plus"></i> Add Chapter
+                    </button>
+                    <button class="btn btn-primary" onclick="saveBook()">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                    <button class="btn btn-success" onclick="publishBook()">
+                        <i class="fas fa-upload"></i> Publish
+                    </button>
+                </div>
+            </div>
+            <div class="editor-content">
+                <div class="chapter-list">
+                    <h4>Chapters</h4>
+                    <div id="chapters-list">
+                        <!-- Chapters will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="editor-main">
+                    <div class="editor-toolbar">
+                        <button onclick="formatText('bold')" title="Bold">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button onclick="formatText('italic')" title="Italic">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button onclick="formatText('underline')" title="Underline">
+                            <i class="fas fa-underline"></i>
+                        </button>
+                        <div class="separator"></div>
+                        <button onclick="formatText('insertUnorderedList')" title="Bullet List">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <button onclick="formatText('insertOrderedList')" title="Numbered List">
+                            <i class="fas fa-list-ol"></i>
+                        </button>
+                        <div class="separator"></div>
+                        <button onclick="formatText('undo')" title="Undo">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                        <button onclick="formatText('redo')" title="Redo">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    <div class="chapter-editor">
+                        <input type="text" id="chapter-title" placeholder="Chapter Title" class="chapter-title-input">
+                        <div id="chapter-content" class="chapter-content" contenteditable="true" placeholder="Start writing your chapter here..."></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Reader Section -->
+        <section id="reader" class="section full-height">
+            <div class="reader-header">
+                <div class="reader-title">
+                    <button class="btn btn-back" onclick="closeReader()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <h3 id="reading-book-title">Book Title</h3>
+                    <span id="reading-book-author" class="book-author">by Author Name</span>
+                </div>
+                <div class="reader-controls">
+                    <button class="btn btn-secondary" onclick="toggleBookmarks()">
+                        <i class="fas fa-bookmark"></i> Bookmarks
+                    </button>
+                    <button class="btn btn-primary" id="edit-book-btn" onclick="requestEdit()" style="display: none;">
+                        <i class="fas fa-edit"></i> Request Edit
+                    </button>
+                </div>
+            </div>
+            <div class="reader-content">
+                <div class="chapter-nav">
+                    <h4>Chapters</h4>
+                    <div id="reader-chapters-list">
+                        <!-- Chapters will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="reader-main">
+                    <div class="chapter-content-reader">
+                        <h2 id="reader-chapter-title">Chapter Title</h2>
+                        <div id="reader-chapter-content">
+                            <!-- Chapter content will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="reader-navigation">
+                        <button class="btn btn-secondary" onclick="previousChapter()">
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <span id="chapter-progress">Chapter 1 of 5</span>
+                        <button class="btn btn-secondary" onclick="nextChapter()">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <div class="comments-header">
+                        <h3>Reader Comments</h3>
+                        <div class="comments-stats">
+                            <span id="comments-count">0 comments</span>
+                        </div>
+                    </div>
+                    <div class="add-comment" id="add-comment-section">
+                        <div class="comment-form">
+                            <textarea id="comment-text" placeholder="Share your thoughts about this book..."></textarea>
+                            <div class="comment-actions">
+                                <div class="rating-input">
+                                    <label>Rating:</label>
+                                    <div class="stars" id="rating-stars">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" onclick="addComment()">
+                                    <i class="fas fa-paper-plane"></i> Post Comment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comments-list" id="comments-list">
+                        <!-- Comments will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bookmarks Panel -->
+            <div id="bookmarks-panel" class="bookmarks-panel">
+                <h4>Your Bookmarks</h4>
+                <div id="bookmarks-list">
+                    <!-- Bookmarks will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Community Guidelines Section -->
+        <section id="guidelines" class="section">
+            <div class="guidelines-container">
+                <div class="guidelines-header">
+                    <h1>📚 Community Guidelines</h1>
+                    <p class="welcome-text">Welcome to Mystique Books</p>
+                </div>
+                
+                <div class="guidelines-content">
+                    <p class="intro-text">At Mystique Books, we are proud to host a vibrant community of creators, learners, and storytellers. To keep this platform safe, respectful, and inspiring for everyone, we ask that you follow these Community Guidelines when using our services.</p>
+                    
+                    <p class="agreement-text">By participating on Mystique Books, you agree to uphold these principles:</p>
+                    
+                    <div class="guideline-item">
+                        <h3>1️⃣ Respect Others</h3>
+                        <p>Treat all members of our community with respect and courtesy. Harassment, hate speech, discrimination, bullying, or personal attacks will not be tolerated.</p>
+                    </div>
+                    
+                    <div class="guideline-item">
+                        <h3>2️⃣ Share Appropriate Content</h3>
+                        <p>You are responsible for the content you create and share. Please do not post:</p>
+                        <ul class="content-rules">
+                            <li>Sexually explicit or pornographic material</li>
+                            <li>Violent, abusive, or threatening content</li>
+                            <li>Illegal or dangerous material</li>
+                            <li>Plagiarized or copyrighted content without permission</li>
+                            <li>False information, spam, or scams</li>
+                        </ul>
+                        <p class="safety-note">Let's keep this space safe and welcoming for everyone.</p>
+                    </div>
+                    
+                    <div class="guideline-item">
+                        <h3>3️⃣ Respect Privacy</h3>
+                        <p>Always protect your own privacy and that of others. Do not share personal or confidential information without clear consent.</p>
+                    </div>
+                    
+                    <div class="guideline-item">
+                        <h3>4️⃣ Honor Intellectual Property</h3>
+                        <p>Only upload content that you own or are licensed to use. Give credit where credit is due — respecting the work of others is part of being a good community member.</p>
+                    </div>
+                    
+                    <div class="guideline-item">
+                        <h3>5️⃣ Use the Platform Responsibly</h3>
+                        <p>Avoid spamming, disruptive behavior, or excessive self-promotion. Our goal is to foster genuine creativity and collaboration.</p>
+                    </div>
+                    
+                    <div class="guideline-item enforcement">
+                        <h3>🚨 Reporting & Enforcement</h3>
+                        <p>If you see any content or behavior that violates these guidelines, please report it. Our team reviews all reports and takes appropriate action, which may include content removal or account suspension.</p>
+                    </div>
+                    
+                    <div class="guideline-item updates">
+                        <h3>🔄 Updates</h3>
+                        <p>These guidelines may evolve as our community grows. We encourage you to review them periodically.</p>
+                    </div>
+                    
+                    <div class="guideline-item thank-you">
+                        <h3>🌟 Thank You!</h3>
+                        <p>By following these guidelines, you help us build an open and inspiring environment where creativity can flourish. We're glad to have you here — happy creating!</p>
+                    </div>
+                </div>
+                
+                <div class="guidelines-footer">
+                    <button class="btn btn-primary" onclick="showSection('home')">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Authentication Modal -->
+        <div id="auth-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAuthModal()">&times;</span>
+                <div id="login-form" class="auth-form">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to continue your writing journey</p>
+                    <form onsubmit="login(event)">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </button>
+                    </form>
+                    <p class="auth-switch">Don't have an account? <a href="#" onclick="switchAuthMode('register')">Sign up here</a></p>
+                </div>
+                <div id="register-form" class="auth-form" style="display: none;">
+                    <h2>Join Mystique Books</h2>
+                    <p>Create your account and start your writing adventure</p>
+                    <form onsubmit="register(event)">
+                        <div class="form-group">
+                            <label for="register-name">Full Name</label>
+                            <input type="text" id="register-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirm Password</label>
+                            <input type="password" id="register-confirm-password" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                    </form>
+                    <p class="auth-switch">Already have an account? <a href="#" onclick="switchAuthMode('login')">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Mystique Books</h4>
+                <p>Empowering authors and readers worldwide</p>
+            </div>
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul>
+                    <li>Easy Writing Tools</li>
+                    <li>Collaborative Editing</li>
+                    <li>Instant Publishing</li>
+                    <li>Interactive Reading</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li>Help Center</li>
+                    <li>Contact Us</li>
+                    <li>Community</li>
+                    <li><a href="#" onclick="showSection('guidelines')" style="color: inherit; text-decoration: none;">Guidelines</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Mystique Books. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Notifications -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
